@@ -1,0 +1,37 @@
+.oneway_from {
+  font-size: 30px;
+}
+.oneway_from > select {
+  font-size: 20px;
+  padding: 1.5%;
+  color: greenyellow;
+}
+
+.oneway_to {
+  font-size: 30px;
+}
+.oneway_to > select {
+  font-size: 20px;
+  padding: 1.5%;
+  color: greenyellow;
+}
+
+.oneway_find {
+  font-size: 30px;
+  padding-left: 1.5%;
+  padding-right: 1.5%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+.oneway_find:hover {
+  color: crimson;
+  transform: scale(1.1);
+}
+
+.oneway_header {
+    margin: 2%;
+}
+
+.oneway_header > span {
+    color: greenyellow;
+}

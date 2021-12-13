@@ -1,6 +1,8 @@
 import { useHistory } from 'react-router-dom';
+import React from "react";
+import "./Ftype.css";
 
-function FtypeComp() {
+function Ftype() {
 
     const history = useHistory();
 
@@ -14,16 +16,16 @@ function FtypeComp() {
         history.push('/roundtrip')
     }
     return (
-      <div className="App">
-          <h2>Step 1 - Select an Option</h2>
+      <div className="ftype">
+          <h2 className="ftype_header"><span>1.</span> Select an Option</h2>
 
 
-          <button onClick={gotoOW}>One Way</button>
-          <button onClick={gotoRT}>RoundTrip</button>
+          <button className="ftype_button" onClick={gotoOW}>One Way</button>
+          <button className="ftype_button" onClick={gotoRT}>RoundTrip</button>
           
 
       </div>
     );
   }
   
-  export default FtypeComp;
+  export default Ftype;

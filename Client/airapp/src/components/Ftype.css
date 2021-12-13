@@ -1,0 +1,10 @@
+.ftype_button {
+    margin: 1%;
+    font-size: 20px;
+    color: greenyellow;
+    padding: 1%;
+}
+
+.ftype_header > span {
+    color: greenyellow;
+}
