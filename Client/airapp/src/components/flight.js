@@ -5,16 +5,26 @@ import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FlightLand from "@mui/icons-material/FlightLand";
 import { Col, Row } from "react-grid-system";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import DateRangeIcon from "@mui/icons-material/DateRange";
 import DateRange from "@mui/icons-material/DateRange";
+import { useHistory } from "react-router";
 
 function Flight(props) {
+
+  const history = useHistory();
+
   const [flight, setFlight] = useState({});
 
   useEffect(async () => {
     let resp = await flsrv.getFlight(props.flightid);
     setFlight(resp.data);
   });
+
+
+  const selectF = (e) => {
+    sessionStorage.setItem("selectedF", props.flightid);
+    sessionStorage.setItem("selectedP", e.target.value);
+    history.push("/passenger");
+  }
 
   return (
     <div className='flight'>
@@ -52,9 +62,9 @@ function Flight(props) {
                 <td>{flight.C}.00$</td>
               </tr>
               <tr>
-                <td><button className="flight_button">Select</button></td>
-                <td><button className="flight_button">Select</button></td>
-                <td><button className="flight_button">Select</button></td>
+                <td><button value={flight.Y} className="flight_button" onClick={selectF} >Select</button></td>
+                <td><button value={flight.W} className="flight_button" onClick={selectF} >Select</button></td>
+                <td><button value={flight.C} className="flight_button" onClick={selectF} >Select</button></td>
               </tr>
             </table>
           </Col>

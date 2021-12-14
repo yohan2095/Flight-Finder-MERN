@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import dstsrv from "../services/destinationService";
 import { Col, Row } from "react-grid-system";
-import Flights from "./Flights";
 import "./Oneway.css";
 import { useHistory } from "react-router-dom";
 
@@ -15,16 +14,14 @@ function Oneway() {
   }, []);
 
   const find = () => {
-    console.log(deparr);
     sessionStorage.setItem("Dep", deparr.departure);
     sessionStorage.setItem("Arr", deparr.arrival);
+    history.push("/flights");
   };
 
   const history = useHistory();
 
-  const gotoFlights = () => {
-    history.push("/flights");
-  };
+ 
 
   return (
     <div className='oneway'>
@@ -74,7 +71,7 @@ function Oneway() {
         <input
           className='oneway_find'
           type='button'
-          onClick={() => find() + gotoFlights()}
+          onClick={() => find()}
           value='Find'
         ></input>
       </form>

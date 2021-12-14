@@ -1,0 +1,14 @@
+input {
+    color: greenyellow;
+    padding: 1%;
+    margin: 2%;
+    font-size: 20px;
+}
+
+.passenger_header {
+    margin: 2%;
+}
+
+.passenger_header > span {
+    color: greenyellow;
+}

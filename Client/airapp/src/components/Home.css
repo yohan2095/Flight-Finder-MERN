@@ -7,3 +7,9 @@
     font-size: 40px;
     margin: 5%;
 }
+
+.home_titleIcon {
+    color: greenyellow;
+    height: 30px !important;
+    width:fit-content !important;
+}

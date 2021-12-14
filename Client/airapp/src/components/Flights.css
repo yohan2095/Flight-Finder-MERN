@@ -1,4 +1,7 @@
 .flights_header {
-    font-size: 40px;
     margin: 2%;
+}
+
+.flights_header > span {
+    color: greenyellow;
 }
