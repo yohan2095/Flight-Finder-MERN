@@ -2,6 +2,7 @@
 const express = require('express');
 const destinationRouter = require('./routers/destinationRouter');
 const flightRouter = require('./routers/flightRouter');
+const bookingRouter = require('./routers/bookingRouter');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
@@ -20,5 +21,6 @@ require('./configs/database');
 
 app.use('/api/destinations', destinationRouter);
 app.use('/api/flights', flightRouter);
+app.use('/api/bookings', bookingRouter);
 
 app.listen(8000);

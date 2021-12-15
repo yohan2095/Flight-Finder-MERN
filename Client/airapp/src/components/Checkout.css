@@ -72,3 +72,14 @@
     transform: scale(1.1);
 }
 
+.checkout_info {
+    position: relative;
+    top: 92px;
+    font-size: 12px;
+}
+
+.checkout_fnum {
+    color: greenyellow;
+    font-size: 25px;
+}
+

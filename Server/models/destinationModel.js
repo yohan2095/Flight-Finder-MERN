@@ -4,8 +4,7 @@ let DestinationSchema = new mongoose.Schema({
     IATA : String,
     country : String,
     city : String,
-    duration : String,
-    price : Number
+    imgUrl : String
 })
 
 module.exports = mongoose.model('destinations', DestinationSchema)
