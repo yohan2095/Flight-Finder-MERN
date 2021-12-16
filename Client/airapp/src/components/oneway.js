@@ -75,6 +75,7 @@ function Oneway() {
           value='Find'
         ></input>
       </form>
+      
     </div>
   );
 }

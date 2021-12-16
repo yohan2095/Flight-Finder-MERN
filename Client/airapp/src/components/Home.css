@@ -13,3 +13,16 @@
     height: 30px !important;
     width:fit-content !important;
 }
+
+.home_return {
+    color: greenyellow;
+    padding: 1%;
+    border-radius: 50%;
+    border-color: greenyellow;
+    position: relative;
+    top: 100px;
+    right: 25%;
+}
+.home_return:hover {
+    transform: scale(1.1);
+}

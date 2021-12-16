@@ -7,9 +7,13 @@ import DateRange from "@mui/icons-material/DateRange";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import PaymentIcon from "@mui/icons-material/Payment";
-import axios from 'axios';
+import axios from "axios";
+import { useHistory } from "react-router";
 
 function Checkout() {
+
+  const history = useHistory();
+
   const [flight, setFlight] = useState({});
 
   const [booking, setBooking] = useState({
@@ -31,10 +35,13 @@ function Checkout() {
   useEffect(async () => {
     let resp = await flsrv.getFlight(flightID);
     setFlight(resp.data);
-  });
+    pay();
+  }, [booking]);
 
   const pay = async () => {
-    {/* Generate PNR number */}
+    {
+      /* Generate PNR number */
+    }
     var result = "";
     var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ23456789";
     var charactersLength = characters.length;
@@ -43,7 +50,9 @@ function Checkout() {
     }
     const Gpnr = result;
 
-    {/* Set data into booking */}
+    {
+      /* Set data into booking */
+    }
     setBooking({
       depT: flight.depT,
       arrT: flight.arrT,
@@ -56,9 +65,19 @@ function Checkout() {
       fnum: flight.fnum,
     });
 
-    {/* POST to DB */}
-    let status = await axios.post("http://localhost:8000/api/bookings/", booking);
-    console.log(booking);
+    sessionStorage.setItem("bookingCode", Gpnr)
+  };
+
+  const save = async () => {
+    {
+      /* POST to DB */
+    }
+    let status = await axios.post(
+      "http://localhost:8000/api/bookings/",
+      booking
+    );
+
+    history.push("/receipt");
   };
   return (
     <div className='checkout'>
@@ -91,7 +110,7 @@ function Checkout() {
         Total price : <label>{flightP}.00$</label>
       </span>{" "}
       <br />
-      <button className='checkout_valid' onClick={pay}>
+      <button className='checkout_valid' onClick={save}>
         <PaymentIcon className='checkout_validIcon' /> Pay
       </button>{" "}
       <br />
