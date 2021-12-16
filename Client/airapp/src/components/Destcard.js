@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
-import dstsrv from "../services/destinationService";
-import "./Destcard.css";
+import React, { useEffect, useState } from 'react'
+import dstsrv from '../services/destinationService'
+import './Destcard.css'
 
 function Destcard(props) {
-  const [destinations, setDestinations] = useState([]);
+  const [destinations, setDestinations] = useState([])
 
-  useEffect(async () => {
-    let resp = await dstsrv.getDestination(props.destid);
-    setDestinations(resp.data);
-  });
+  useEffect( () => {
+    async function fetchData() {
+      let resp = await dstsrv.getDestination(props.destid)
+      setDestinations(resp.data)
+    }
+    fetchData()
+  }, [props.destid])
 
   return (
     <div className='destcard'>
@@ -21,7 +24,7 @@ function Destcard(props) {
         style={{ backgroundImage: `url(${destinations.imgUrl})` }}
       ></div>
     </div>
-  );
+  )
 }
 
-export default Destcard;
+export default Destcard

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import flsrv from '../services/flightService'
-import Flight from './Flight'
+import FlightOu from './FlightOu'
 import './Flights.css'
 
-function Flights() {
+function FlightsRT2() {
   const [flights, setFlights] = useState([])
   const [flightr, setFlightr] = useState([])
 
@@ -22,7 +22,7 @@ function Flights() {
     async function filterF() {
       let flresult = []
     flights.forEach((fl) => {
-      if (fl.from === depart && fl.to === arrive) {
+      if (fl.from === arrive && fl.to === depart) {
         flresult.push(fl._id)
       }
     })
@@ -37,16 +37,16 @@ function Flights() {
   return (
     <div className='flights'>
       <h2 className='flights_header'>
-        <span>3. </span>Select your flight
+        <span>3. </span>Select your outgoing flight
       </h2>
 
       <div>
         {flightr.map((item) => {
-          return <Flight flightid={item} key={item} />
+          return <FlightOu flightid2={item} key={item} />
         })}
       </div>
     </div>
   )
 }
 
-export default Flights
+export default FlightsRT2

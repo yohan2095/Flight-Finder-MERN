@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import flsrv from '../services/flightService'
-import Flight from './Flight'
+import FlightOn from './FlightOn'
 import './Flights.css'
 
-function Flights() {
+function FlightsRT() {
   const [flights, setFlights] = useState([])
   const [flightr, setFlightr] = useState([])
 
@@ -37,16 +37,16 @@ function Flights() {
   return (
     <div className='flights'>
       <h2 className='flights_header'>
-        <span>3. </span>Select your flight
+        <span>3. </span>Select your ongoing flight
       </h2>
 
       <div>
         {flightr.map((item) => {
-          return <Flight flightid={item} key={item} />
+          return <FlightOn flightid={item} key={item} />
         })}
       </div>
     </div>
   )
 }
 
-export default Flights
+export default FlightsRT

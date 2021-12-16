@@ -10,37 +10,53 @@ import PaymentIcon from '@mui/icons-material/Payment'
 import axios from 'axios'
 import { useHistory } from 'react-router'
 
-function Checkout() {
+function CheckoutRT() {
   const history = useHistory()
 
   const [flight, setFlight] = useState({})
+  const [flight2, setFlight2] = useState({})
   const [booking, setBooking] = useState({
     depT: '',
+    depT2: '',
     arrT: '',
+    arrT2: '',
     duration: '',
+    duration2: '',
     pax: '',
     from: '',
+    from2: '',
     to: '',
+    to2: '',
     price: '',
     pnr: '',
     fnum: '',
+    fnum2: '',
   })
 
   const pax = sessionStorage.getItem('pax')
   const flightID = sessionStorage.getItem('selectedF')
+  const flightID2 = sessionStorage.getItem('selectedF2')
   const flightP = sessionStorage.getItem('selectedP')
+  const flightP2 = sessionStorage.getItem('selectedP2')
+  const totalPrice = parseInt(flightP) + parseInt(flightP2);
+  console.log(totalPrice)
 
   useEffect(() => {
     async function fetchData() {
       let resp = await flsrv.getFlight(flightID)
       setFlight(resp.data)
+
+      let resp2 = await flsrv.getFlight(flightID2)
+      setFlight2(resp2.data)
     }
     fetchData()
     pay()
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [booking, flightID])
+  }, [flightID, flightID2])
 
   const pay = async () => {
+
+   
     /* Generate PNR number */
 
     var result = ''
@@ -55,14 +71,20 @@ function Checkout() {
 
     setBooking({
       depT: flight.depT,
+      depT2: flight2.depT,
       arrT: flight.arrT,
+      arrT2: flight2.arrT,
       duration: flight.duration,
+      duration2: flight2.duration,
       pax: pax,
       from: flight.from,
+      from2: flight2.from,
       to: flight.to,
-      price: flightP,
+      to2: flight2.to,
+      price: totalPrice,
       pnr: Gpnr,
       fnum: flight.fnum,
+      fnum2: flight2.fnum,
     })
 
     sessionStorage.setItem('bookingCode', Gpnr)
@@ -84,25 +106,46 @@ function Checkout() {
       <span className='checkout_passenger'>
         <PersonOutlineIcon className='checkout_passengerIcon' /> <label>{pax}</label>
       </span>
+      <div className="checkout_ongoing">
+        <h2>Ongoing Flight</h2>
+        <span className='checkout_fnum'>{flight.fnum}</span>
+        <br />
+        <span className='checkout_fromto'>
+          <FlightTakeoffIcon className='checkout_fromtoIcon' /> {flight.from}{' '}
+          <FlightLand className='checkout_fromtoIcon' /> {flight.to}
+        </span>{' '}
+        <br />
+        <span className='checkout_deparr'>
+          <DateRange className='checkout_deparrIcon' /> Departure : {flight.depT} Arrival :{' '}
+          {flight.arrT}
+        </span>
+        <br />
+        <span className='checkout_duration'>
+          <AccessTimeIcon className='checkout_deparrIcon' /> {flight.duration} hours
+        </span>
+      </div>
       <br /> <br />
-      <span className='checkout_fnum'>{flight.fnum}</span>
+      <div className="checkout_ongoing">
+      <h2>Outgoing Flight</h2>
+      <span className='checkout_fnum'>{flight2.fnum}</span>
       <br />
       <span className='checkout_fromto'>
-        <FlightTakeoffIcon className='checkout_fromtoIcon' /> {flight.from}{' '}
-        <FlightLand className='checkout_fromtoIcon' /> {flight.to}
+        <FlightTakeoffIcon className='checkout_fromtoIcon' /> {flight2.from}{' '}
+        <FlightLand className='checkout_fromtoIcon' /> {flight2.to}
       </span>{' '}
       <br />
       <span className='checkout_deparr'>
-        <DateRange className='checkout_deparrIcon' /> Departure : {flight.depT} Arrival :{' '}
-        {flight.arrT}
+        <DateRange className='checkout_deparrIcon' /> Departure : {flight2.depT} Arrival :{' '}
+        {flight2.arrT}
       </span>
       <br />
       <span className='checkout_duration'>
-        <AccessTimeIcon className='checkout_deparrIcon' /> {flight.duration} hours
+        <AccessTimeIcon className='checkout_deparrIcon' /> {flight2.duration} hours
       </span>
+      </div>
       <br />
       <span className='checkout_price'>
-        Total price : <label>{flightP}.00$</label>
+        Total price : <label>{totalPrice}.00$</label>
       </span>{' '}
       <br />
       <button className='checkout_valid' onClick={save}>
@@ -116,4 +159,4 @@ function Checkout() {
   )
 }
 
-export default Checkout
+export default CheckoutRT

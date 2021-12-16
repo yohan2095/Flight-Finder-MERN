@@ -8,7 +8,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import DateRange from '@mui/icons-material/DateRange'
 import { useHistory } from 'react-router'
 
-function Flight(props) {
+function FlightOn(props) {
   const history = useHistory()
 
   const [flight, setFlight] = useState({})
@@ -24,7 +24,7 @@ function Flight(props) {
   const selectF = (e) => {
     sessionStorage.setItem('selectedF', props.flightid)
     sessionStorage.setItem('selectedP', e.target.value)
-    history.push('/passenger')
+    history.push('/flightsrt2')
   }
 
   return (
@@ -86,4 +86,4 @@ function Flight(props) {
   )
 }
 
-export default Flight
+export default FlightOn
