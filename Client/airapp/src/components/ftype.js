@@ -24,6 +24,11 @@ function Ftype() {
   const gotoRT = () => {
     history.push('/roundtrip')
   }
+
+  const gotoMbkg = () => {
+    history.push('/authbkg')
+  }
+  
   return (
     <div className='ftype'>
       <h2 className='ftype_header'>
@@ -48,6 +53,10 @@ function Ftype() {
           return <Destcard destid={item._id} key={item._id} />
         })}
       </div>
+
+      <button onClick={gotoMbkg} className='ftype_myReservation'>
+        My Booking
+      </button>
     </div>
   )
 }

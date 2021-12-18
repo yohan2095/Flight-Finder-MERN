@@ -37,7 +37,7 @@ function Oneway() {
               <select onChange={(e) => setDeparr({ ...deparr, departure: e.target.value })}>
                 {destinations.map((item) => {
                   return (
-                    <option value={item.IATA}>
+                    <option key={item._id} value={item.IATA}>
                       {item.city}, {item.country} ({item.IATA})
                     </option>
                   )
@@ -51,7 +51,7 @@ function Oneway() {
               <select onChange={(e) => setDeparr({ ...deparr, arrival: e.target.value })}>
                 {destinations.map((item) => {
                   return (
-                    <option value={item.IATA}>
+                    <option key={item._id} value={item.IATA}>
                       {item.city}, {item.country} ({item.IATA})
                     </option>
                   )

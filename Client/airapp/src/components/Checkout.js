@@ -29,6 +29,7 @@ function Checkout() {
   const pax = sessionStorage.getItem('pax')
   const flightID = sessionStorage.getItem('selectedF')
   const flightP = sessionStorage.getItem('selectedP')
+  
 
   useEffect(() => {
     async function fetchData() {
@@ -37,20 +38,15 @@ function Checkout() {
     }
     fetchData()
     pay()
+    return () => {
+      setBooking({})
+    }
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [booking, flightID])
 
   const pay = async () => {
-    /* Generate PNR number */
 
-    var result = ''
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ23456789'
-    var charactersLength = characters.length
-    for (var i = 0; i < 6; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength))
-    }
-    const Gpnr = result
-
+    
     /* Set data into booking */
 
     setBooking({
@@ -61,14 +57,14 @@ function Checkout() {
       from: flight.from,
       to: flight.to,
       price: flightP,
-      pnr: Gpnr,
       fnum: flight.fnum,
+      pnr: sessionStorage.getItem("bookingCode")
     })
-
-    sessionStorage.setItem('bookingCode', Gpnr)
+    
   }
 
   const save = async () => {
+    
     let status = await axios.post('http://localhost:8000/api/bookings/', booking)
 
     console.log(status)

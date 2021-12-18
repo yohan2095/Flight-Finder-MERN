@@ -13,6 +13,8 @@ import FlightsRT from './FlightsRT'
 import FlightsRT2 from './FlightsRT2'
 import PasengerRT from './PassengerRT'
 import CheckoutRT from './CheckoutRT'
+import AuthBkg from './AuthBkg'
+import Mybooking from './Mybooking'
 
 function Home() {
   const history = useHistory()
@@ -59,6 +61,12 @@ function Home() {
         </Route>
         <Route path='/flightsrt2'>
           <FlightsRT2 />
+        </Route>
+        <Route path='/authbkg'>
+          <AuthBkg />
+        </Route>
+        <Route path='/mybooking'>
+          <Mybooking />
         </Route>
       </Switch>
 

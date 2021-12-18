@@ -9,7 +9,6 @@ let BookingSchema = new mongoose.Schema({
     to2 : String,
     duration : String,
     duration2 : String,
-    duration2 : String,
     depT : String,
     depT2 : String,
     arrT : String,

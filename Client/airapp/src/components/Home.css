@@ -20,8 +20,8 @@
     border-radius: 50%;
     border-color: greenyellow;
     position: relative;
-    top: 100px;
-    right: 25%;
+    top: 7vh;
+    right: 27vw;
 }
 .home_return:hover {
     transform: scale(1.1);

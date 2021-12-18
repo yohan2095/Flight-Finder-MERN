@@ -15,7 +15,7 @@ function CheckoutRT() {
 
   const [flight, setFlight] = useState({})
   const [flight2, setFlight2] = useState({})
-  const [booking, setBooking] = useState({
+  const [booking2, setBooking2] = useState({
     depT: '',
     depT2: '',
     arrT: '',
@@ -39,7 +39,6 @@ function CheckoutRT() {
   const flightP = sessionStorage.getItem('selectedP')
   const flightP2 = sessionStorage.getItem('selectedP2')
   const totalPrice = parseInt(flightP) + parseInt(flightP2);
-  console.log(totalPrice)
 
   useEffect(() => {
     async function fetchData() {
@@ -51,25 +50,17 @@ function CheckoutRT() {
     }
     fetchData()
     pay()
+    
+    return () => {
+        setBooking2({})
+    }
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [flightID, flightID2])
+  })
 
   const pay = async () => {
-
-   
-    /* Generate PNR number */
-
-    var result = ''
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ23456789'
-    var charactersLength = characters.length
-    for (var i = 0; i < 6; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength))
-    }
-    const Gpnr = result
-
     /* Set data into booking */
 
-    setBooking({
+    setBooking2({
       depT: flight.depT,
       depT2: flight2.depT,
       arrT: flight.arrT,
@@ -82,16 +73,14 @@ function CheckoutRT() {
       to: flight.to,
       to2: flight2.to,
       price: totalPrice,
-      pnr: Gpnr,
+      pnr: sessionStorage.getItem("bookingCode"),
       fnum: flight.fnum,
       fnum2: flight2.fnum,
     })
-
-    sessionStorage.setItem('bookingCode', Gpnr)
   }
 
   const save = async () => {
-    let status = await axios.post('http://localhost:8000/api/bookings/', booking)
+    let status = await axios.post('http://localhost:8000/api/bookings/', booking2)
 
     console.log(status)
 

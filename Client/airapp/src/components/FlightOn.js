@@ -51,33 +51,39 @@ function FlightOn(props) {
 
           <Col md={6}>
             <table className='flight_table'>
-              <tr>
-                <th>Economy</th>
-                <th>Premium</th>
-                <th>Business</th>
-              </tr>
-              <tr>
-                <td>{flight.Y}.00$</td>
-                <td>{flight.W}.00$</td>
-                <td>{flight.C}.00$</td>
-              </tr>
-              <tr>
-                <td>
-                  <button value={flight.Y} className='flight_button' onClick={selectF}>
-                    Select
-                  </button>
-                </td>
-                <td>
-                  <button value={flight.W} className='flight_button' onClick={selectF}>
-                    Select
-                  </button>
-                </td>
-                <td>
-                  <button value={flight.C} className='flight_button' onClick={selectF}>
-                    Select
-                  </button>
-                </td>
-              </tr>
+              <thead>
+                <tr>
+                  <th>Economy</th>
+                  <th>Premium</th>
+                  <th>Business</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{flight.Y}.00$</td>
+                  <td>{flight.W}.00$</td>
+                  <td>{flight.C}.00$</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td>
+                    <button value={flight.Y} className='flight_button' onClick={selectF}>
+                      Select
+                    </button>
+                  </td>
+                  <td>
+                    <button value={flight.W} className='flight_button' onClick={selectF}>
+                      Select
+                    </button>
+                  </td>
+                  <td>
+                    <button value={flight.C} className='flight_button' onClick={selectF}>
+                      Select
+                    </button>
+                  </td>
+                </tr>
+              </tfoot>
             </table>
           </Col>
         </Row>

@@ -3,10 +3,17 @@ const express = require('express')
 
 const router = express.Router();
 
+//GET ALL Bookings
+router.route('/').get(async function(req,resp)
+{
+    let data = await bookingBL.getAllBookings();
+    return resp.json(data)
+})
+
 //GET booking by ID
 router.route('/:id').get(async function(req,resp)
 {
-    let data = await bookingBL.getBooking(req.pnr);
+    let data = await bookingBL.getBooking(req.params.id);
     return resp.json(data)
 })
 

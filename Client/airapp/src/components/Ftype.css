@@ -8,3 +8,17 @@
 .ftype_header > span {
     color: greenyellow;
 }
+
+.ftype_myReservation {
+    color: greenyellow;
+    position: relative;
+    top: 5vh;
+    right: 27vw;
+    padding: 1%;
+    font-size: 24px;
+}
+
+.ftype_myReservation:hover {
+    color: crimson;
+    transform: scale(1.1);
+}

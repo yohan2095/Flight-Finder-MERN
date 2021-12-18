@@ -1,9 +1,22 @@
-const bookingModel = require('./bookingModel');
+const bookingModel = require('./bookingModel')
 
-//GET booking by PNR
+//GET ALL Bookings
+const getAllBookings = () => {
+  return new Promise((resolve, reject) => {
+    bookingModel.find({}, function (err, data) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(data)
+      }
+    })
+  })
+}
+
+//GET Booking by ID
 const getBooking = (id) =>
 {
-    return new Promise((resolve,reject) => 
+    return new Promise((resolve,reject) =>
     {
         bookingModel.findById(id, function(err,data)
         {
@@ -20,40 +33,34 @@ const getBooking = (id) =>
 }
 
 //POST a Booking
-const createBooking = (obj) =>
-{
-    return new Promise((resolve,reject) =>
-    {
-        let bkg = new bookingModel({
-            fnum : obj.fnum,
-            fnum2 : obj.fnum2,
-            depT : obj.depT,
-            depT2 : obj.depT2,
-            arrT : obj.arrT,
-            arrT2 : obj.arrT2,
-            from : obj.from,
-            from2 : obj.from2,
-            to : obj.to,
-            to2 : obj.to2,
-            pax : obj.pax,
-            price : obj.price,
-            duration : obj.duration,
-            duration2 : obj.duration2,
-            pnr : obj.pnr,
-        })
-
-        bkg.save(function(err)
-        {
-            if(err)
-            {
-                reject(err)
-            }
-            else
-            {
-                resolve('Created')
-            }
-        })
+const createBooking = (obj) => {
+  return new Promise((resolve, reject) => {
+    let bkg = new bookingModel({
+      fnum: obj.fnum,
+      fnum2: obj.fnum2,
+      depT: obj.depT,
+      depT2: obj.depT2,
+      arrT: obj.arrT,
+      arrT2: obj.arrT2,
+      from: obj.from,
+      from2: obj.from2,
+      to: obj.to,
+      to2: obj.to2,
+      pax: obj.pax,
+      price: obj.price,
+      duration: obj.duration,
+      duration2: obj.duration2,
+      pnr: obj.pnr,
     })
+
+    bkg.save(function (err) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve('Created')
+      }
+    })
+  })
 }
 
-module.exports = {getBooking , createBooking}
+module.exports = { getAllBookings, getBooking, createBooking }
