@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import flsrv from '../services/flightService'
+import flsrv from '../../../services/flightService'
 import FlightOn from './FlightOn'
-import './Flights.css'
+import '../oneway/Flights.css'
 
 function FlightsRT() {
   const [flights, setFlights] = useState([])

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import flsrv from '../services/flightService'
+import flsrv from '../../../services/flightService'
 import './Flight.css'
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff'
 import FlightLand from '@mui/icons-material/FlightLand'
@@ -8,7 +8,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import DateRange from '@mui/icons-material/DateRange'
 import { useHistory } from 'react-router'
 
-function FlightOn(props) {
+function Flight(props) {
   const history = useHistory()
 
   const [flight, setFlight] = useState({})
@@ -24,7 +24,7 @@ function FlightOn(props) {
   const selectF = (e) => {
     sessionStorage.setItem('selectedF', props.flightid)
     sessionStorage.setItem('selectedP', e.target.value)
-    history.push('/flightsrt2')
+    history.push('/passenger')
   }
 
   return (
@@ -92,4 +92,4 @@ function FlightOn(props) {
   )
 }
 
-export default FlightOn
+export default Flight

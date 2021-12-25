@@ -1,20 +1,20 @@
 import { Route, Switch, useHistory } from 'react-router'
-import FtypeComp from './Ftype'
-import OneWayComp from './Oneway'
 import './Home.css'
-import Flights from './Flights'
-import Pasenger from './Pasenger'
+import Flights from '../bookingsystem/oneway/Flights'
+import Pasenger from '../bookingsystem/oneway/Pasenger'
 import FlightIcon from '@mui/icons-material/Flight'
-import Checkout from './Checkout'
-import Receipt from './Receipt'
+import Checkout from '../bookingsystem/oneway/Checkout'
+import Receipt from '../bookingsystem/Receipt'
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn'
-import Roundtrip from './Roundtrip'
-import FlightsRT from './FlightsRT'
-import FlightsRT2 from './FlightsRT2'
-import PasengerRT from './PassengerRT'
-import CheckoutRT from './CheckoutRT'
-import AuthBkg from './AuthBkg'
-import Mybooking from './Mybooking'
+import FlightsRT from '../bookingsystem/roundtrip/FlightsRT'
+import FlightsRT2 from '../bookingsystem/roundtrip/FlightsRT2'
+import PasengerRT from '../bookingsystem/roundtrip/PassengerRT'
+import CheckoutRT from '../bookingsystem/roundtrip/CheckoutRT'
+import AuthBkg from '../mybooking/AuthBkg'
+import Mybooking from '../mybooking/Mybooking'
+import Roundtrip from '../bookingsystem/roundtrip/Roundtrip'
+import Oneway from '../bookingsystem/oneway/Oneway'
+import Ftype from '../bookingsystem/Ftype'
 
 function Home() {
   const history = useHistory()
@@ -22,18 +22,19 @@ function Home() {
   const reset = () => {
     history.push('/')
   }
+
   return (
     <div className='home'>
       <h1 className='home_title'>
         Air YHN <FlightIcon className='home_titleIcon' /> Flight booking simulator
       </h1>
-
+      {/* Main router in order to switch between components */}
       <Switch>
         <Route exact path='/'>
-          <FtypeComp />
+          <Ftype />
         </Route>
         <Route path='/oneway'>
-          <OneWayComp />
+          <Oneway />
         </Route>
         <Route path='/roundtrip'>
           <Roundtrip />
@@ -70,6 +71,7 @@ function Home() {
         </Route>
       </Switch>
 
+      {/* Reset button which takes the user back to the Home screen in order to restart the booking process */}
       <button className='home_return' onClick={reset}>
         <KeyboardReturnIcon />
       </button>

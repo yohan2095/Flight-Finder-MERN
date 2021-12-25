@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import './Checkout.css'
-import flsrv from '../services/flightService'
+import '../oneway/Checkout.css'
+import flsrv from '../../../services/flightService'
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff'
 import FlightLand from '@mui/icons-material/FlightLand'
 import DateRange from '@mui/icons-material/DateRange'
@@ -16,21 +16,10 @@ function CheckoutRT() {
   const [flight, setFlight] = useState({})
   const [flight2, setFlight2] = useState({})
   const [booking2, setBooking2] = useState({
-    depT: '',
-    depT2: '',
-    arrT: '',
-    arrT2: '',
-    duration: '',
-    duration2: '',
     pax: '',
-    from: '',
-    from2: '',
-    to: '',
-    to2: '',
     price: '',
     pnr: '',
-    fnum: '',
-    fnum2: '',
+    sflights: []
   })
 
   const pax = sessionStorage.getItem('pax')
@@ -38,7 +27,7 @@ function CheckoutRT() {
   const flightID2 = sessionStorage.getItem('selectedF2')
   const flightP = sessionStorage.getItem('selectedP')
   const flightP2 = sessionStorage.getItem('selectedP2')
-  const totalPrice = parseInt(flightP) + parseInt(flightP2);
+  const totalPrice = parseInt(flightP) + parseInt(flightP2)
 
   useEffect(() => {
     async function fetchData() {
@@ -50,39 +39,26 @@ function CheckoutRT() {
     }
     fetchData()
     pay()
-    
+
     return () => {
-        setBooking2({})
+      setBooking2({})
     }
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  })
+  }, [])
 
   const pay = async () => {
     /* Set data into booking */
 
     setBooking2({
-      depT: flight.depT,
-      depT2: flight2.depT,
-      arrT: flight.arrT,
-      arrT2: flight2.arrT,
-      duration: flight.duration,
-      duration2: flight2.duration,
       pax: pax,
-      from: flight.from,
-      from2: flight2.from,
-      to: flight.to,
-      to2: flight2.to,
       price: totalPrice,
-      pnr: sessionStorage.getItem("bookingCode"),
-      fnum: flight.fnum,
-      fnum2: flight2.fnum,
+      pnr: sessionStorage.getItem('bookingCode'),
+      sflights: [flightID, flightID2]
     })
   }
 
   const save = async () => {
     let status = await axios.post('http://localhost:8000/api/bookings/', booking2)
-
-    console.log(status)
 
     history.push('/receipt')
   }
@@ -95,7 +71,7 @@ function CheckoutRT() {
       <span className='checkout_passenger'>
         <PersonOutlineIcon className='checkout_passengerIcon' /> <label>{pax}</label>
       </span>
-      <div className="checkout_ongoing">
+      <div className='checkout_ongoing'>
         <h2>Ongoing Flight</h2>
         <span className='checkout_fnum'>{flight.fnum}</span>
         <br />
@@ -114,23 +90,23 @@ function CheckoutRT() {
         </span>
       </div>
       <br /> <br />
-      <div className="checkout_ongoing">
-      <h2>Outgoing Flight</h2>
-      <span className='checkout_fnum'>{flight2.fnum}</span>
-      <br />
-      <span className='checkout_fromto'>
-        <FlightTakeoffIcon className='checkout_fromtoIcon' /> {flight2.from}{' '}
-        <FlightLand className='checkout_fromtoIcon' /> {flight2.to}
-      </span>{' '}
-      <br />
-      <span className='checkout_deparr'>
-        <DateRange className='checkout_deparrIcon' /> Departure : {flight2.depT} Arrival :{' '}
-        {flight2.arrT}
-      </span>
-      <br />
-      <span className='checkout_duration'>
-        <AccessTimeIcon className='checkout_deparrIcon' /> {flight2.duration} hours
-      </span>
+      <div className='checkout_ongoing'>
+        <h2>Outgoing Flight</h2>
+        <span className='checkout_fnum'>{flight2.fnum}</span>
+        <br />
+        <span className='checkout_fromto'>
+          <FlightTakeoffIcon className='checkout_fromtoIcon' /> {flight2.from}{' '}
+          <FlightLand className='checkout_fromtoIcon' /> {flight2.to}
+        </span>{' '}
+        <br />
+        <span className='checkout_deparr'>
+          <DateRange className='checkout_deparrIcon' /> Departure : {flight2.depT} Arrival :{' '}
+          {flight2.arrT}
+        </span>
+        <br />
+        <span className='checkout_duration'>
+          <AccessTimeIcon className='checkout_deparrIcon' /> {flight2.duration} hours
+        </span>
       </div>
       <br />
       <span className='checkout_price'>

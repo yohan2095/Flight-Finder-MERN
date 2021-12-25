@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Checkout.css'
-import flsrv from '../services/flightService'
+import flsrv from '../../../services/flightService'
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff'
 import FlightLand from '@mui/icons-material/FlightLand'
 import DateRange from '@mui/icons-material/DateRange'
@@ -15,15 +15,10 @@ function Checkout() {
 
   const [flight, setFlight] = useState({})
   const [booking, setBooking] = useState({
-    depT: '',
-    arrT: '',
-    duration: '',
     pax: '',
-    from: '',
-    to: '',
     price: '',
     pnr: '',
-    fnum: '',
+    sflights: []
   })
 
   const pax = sessionStorage.getItem('pax')
@@ -42,7 +37,7 @@ function Checkout() {
       setBooking({})
     }
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [booking, flightID])
+  }, [])
 
   const pay = async () => {
 
@@ -50,15 +45,10 @@ function Checkout() {
     /* Set data into booking */
 
     setBooking({
-      depT: flight.depT,
-      arrT: flight.arrT,
-      duration: flight.duration,
       pax: pax,
-      from: flight.from,
-      to: flight.to,
       price: flightP,
-      fnum: flight.fnum,
-      pnr: sessionStorage.getItem("bookingCode")
+      pnr: sessionStorage.getItem('bookingCode'),
+      sflights: [flightID]
     })
     
   }

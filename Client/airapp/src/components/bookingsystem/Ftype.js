@@ -1,12 +1,12 @@
 import { useHistory } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
 import './Ftype.css'
-import dstsrv from '../services/destinationService'
-import Destcard from './Destcard'
+import dstsrv from '../../services/destinationService'
+import Destcard from '../mainpage/Destcard'
 
 function Ftype() {
   const [destinations, setDestinations] = useState([])
-
+  // Fetch all the destinations data and puts it inside destinations Hook State
   useEffect(() => {
     async function fetchData() {
       let resp = await dstsrv.getAllDestinations()
@@ -48,13 +48,14 @@ function Ftype() {
 
       <h2>Our Destinations :</h2>
 
+      {/* Return Destcard Comp with destid as props */}
       <div>
         {destinations.map((item) => {
           return <Destcard destid={item._id} key={item._id} />
         })}
       </div>
 
-      <button onClick={gotoMbkg} className='ftype_myReservation'>
+      <button onClick={gotoMbkg} className='ftype_myReservation'> 
         My Booking
       </button>
     </div>

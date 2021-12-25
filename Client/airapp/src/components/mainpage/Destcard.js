@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import dstsrv from '../services/destinationService'
+import dstsrv from '../../services/destinationService'
 import './Destcard.css'
 
 function Destcard(props) {
   const [destinations, setDestinations] = useState([])
 
+  // Fetch all the destinations data and puts it inside destinations Hook State
   useEffect( () => {
     async function fetchData() {
       let resp = await dstsrv.getDestination(props.destid)

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router'
-import './Passenger.css'
+import '../oneway/Passenger.css'
 
 function PasengerRT() {
   const history = useHistory()

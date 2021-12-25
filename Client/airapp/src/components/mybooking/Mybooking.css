@@ -1,0 +1,27 @@
+.mybooking_pnr > span {
+    color: greenyellow;
+}
+
+.mybooking_paxIcon {
+    color: greenyellow;
+    height: fit-content !important;
+    width: 30px !important;
+    position: relative;
+    top: 6px;
+}
+
+.mybooking_pax > span {
+    font-size: 25px;
+}
+
+.mybooking_price {
+    font-size: 25px;
+}
+.mybooking_price > span {
+    color: greenyellow;
+    font-size: 25px;
+}
+
+.mybooking_pnr {
+    font-size: 25px;
+}

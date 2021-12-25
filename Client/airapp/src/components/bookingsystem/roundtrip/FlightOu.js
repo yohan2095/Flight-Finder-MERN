@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import flsrv from '../services/flightService'
-import './Flight.css'
+import flsrv from '../../../services/flightService'
+import '../oneway/Flight.css'
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff'
 import FlightLand from '@mui/icons-material/FlightLand'
 import { Col, Row } from 'react-grid-system'

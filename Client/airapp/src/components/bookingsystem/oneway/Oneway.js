@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import dstsrv from '../services/destinationService'
+import dstsrv from '../../../services/destinationService'
 import { Col, Row } from 'react-grid-system'
-import './Roundtrip.css'
+import './Oneway.css'
 import { useHistory } from 'react-router-dom'
 
-function Roundtrip() {
+function Oneway() {
   const [destinations, setDestinations] = useState([])
   const [deparr, setDeparr] = useState({ departure: 'TLV', arrival: 'TLV' })
 
@@ -19,23 +19,23 @@ function Roundtrip() {
   const find = () => {
     sessionStorage.setItem('Dep', deparr.departure)
     sessionStorage.setItem('Arr', deparr.arrival)
-    history.push('/flightsrt')
+    history.push('/flights')
   }
 
   const history = useHistory()
 
   return (
-    <div className='roundtrip'>
-      <h2 className='roundtrip_header'>
+    <div className='oneway'>
+      <h2 className='oneway_header'>
         <span>2.</span> Select your departure and your arrival destination
       </h2>
       <form>
         <Row>
           <Col md={6}>
-            <div className='roundtrip_from'>
+            <div className='oneway_from'>
               <label>From : </label>
               <select onChange={(e) => setDeparr({ ...deparr, departure: e.target.value })}>
-                {destinations.map((item) => { 
+                {destinations.map((item) => {
                   return (
                     <option key={item._id} value={item.IATA}>
                       {item.city}, {item.country} ({item.IATA})
@@ -46,10 +46,10 @@ function Roundtrip() {
             </div>
           </Col>
           <Col md={6}>
-            <div className='roundtrip_to'>
+            <div className='oneway_to'>
               <label>To : </label>
               <select onChange={(e) => setDeparr({ ...deparr, arrival: e.target.value })}>
-                {destinations.map((item) => { 
+                {destinations.map((item) => {
                   return (
                     <option key={item._id} value={item.IATA}>
                       {item.city}, {item.country} ({item.IATA})
@@ -61,10 +61,10 @@ function Roundtrip() {
           </Col>
         </Row>
 
-        <input className='roundtrip_find' type='button' onClick={() => find()} value='Find'></input>
+        <input className='oneway_find' type='button' onClick={() => find()} value='Find'></input>
       </form>
     </div>
   )
 }
 
-export default Roundtrip
+export default Oneway
