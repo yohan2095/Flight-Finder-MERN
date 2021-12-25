@@ -18,4 +18,4 @@ app.use('/api/destinations', destinationRouter)
 app.use('/api/flights', flightRouter)
 app.use('/api/bookings', bookingRouter)
 
-app.listen(8000)
+app.listen(process.env.PORT || 8000)

@@ -46,4 +46,24 @@ const createBooking = (obj) => {
   })
 }
 
-module.exports = { getAllBookings, getBooking, createBooking }
+
+//DELETE a booking
+const deleteBooking = (id) =>
+{
+    return new Promise((resolve,reject) =>
+    {
+        bookingModel.findByIdAndDelete(id, function(err)
+        {
+            if(err)
+            {
+                reject(err)
+            }
+            else
+            {
+                resolve('Deleted')
+            }
+        })
+    })
+}
+
+module.exports = { getAllBookings, getBooking, createBooking, deleteBooking }

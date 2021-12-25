@@ -1,28 +1,38 @@
 .home {
-    height: 100vh;
+  height: 100vh;
 }
 
 .home_title {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 40px;
-    margin: 5%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 40px;
+  margin: 5%;
 }
 
 .home_titleIcon {
-    color: greenyellow;
-    height: 30px !important;
-    width:fit-content !important;
+  color: greenyellow;
+  height: 30px !important;
+  width: fit-content !important;
 }
 
 .home_return {
-    color: greenyellow;
-    padding: 1%;
-    border-radius: 50%;
-    border-color: greenyellow;
-    position: relative;
-    top: 7vh;
-    right: 27vw;
+  color: greenyellow;
+  padding: 1%;
+  border-radius: 50%;
+  border-color: greenyellow;
+  position: relative;
+  top: 7vh;
+  right: 27vw;
 }
 .home_return:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
+  color: crimson;
+  border-color: crimson;
+}
+
+.home_footer {
+    color: greenyellow;
+    position: fixed;
+    bottom: 1vh;
+    left: 35vw;
+    background-color: transparent;
 }

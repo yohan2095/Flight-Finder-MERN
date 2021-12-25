@@ -4,6 +4,10 @@
     color: greenyellow;
     padding: 1%;
 }
+.ftype_button:hover {
+    transform: scale(1.1);
+    color: cyan;
+}
 
 .ftype_header > span {
     color: greenyellow;
@@ -19,6 +23,6 @@
 }
 
 .ftype_myReservation:hover {
-    color: crimson;
+    color: cyan;
     transform: scale(1.1);
 }

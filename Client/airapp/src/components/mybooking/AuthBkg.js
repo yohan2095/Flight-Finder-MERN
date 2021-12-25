@@ -44,7 +44,7 @@ function AuthBkg() {
         <input type='text' onChange={(e) => setAuth({ ...auth, bkgcode: e.target.value })} />{' '}
       </label>{' '}
       <br />
-      <button onClick={findMbkg}>Find</button>
+      <button className='authbkg_btn' onClick={findMbkg}>Find</button>
     </div>
   )
 }

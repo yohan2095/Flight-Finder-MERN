@@ -1,3 +1,17 @@
 .authbkg_form > input {
     text-transform: uppercase;
 }
+
+.authbkg_btn {
+    color: greenyellow;
+    padding: 1%;
+    font-size: 25px;
+}
+.authbkg_btn:hover {
+    color: cyan;
+    transform: scale(1.1);
+}
+
+.authbkg_form {
+    font-size: 25px;
+}

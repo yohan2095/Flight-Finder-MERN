@@ -75,6 +75,9 @@ function Home() {
       <button className='home_return' onClick={reset}>
         <KeyboardReturnIcon />
       </button>
+
+
+      <span className='home_footer'>Developed by Yohan Arejouane | www.yhn.dev</span>
     </div>
   )
 }

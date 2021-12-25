@@ -25,3 +25,13 @@
 .mybooking_pnr {
     font-size: 25px;
 }
+
+.mybooking_delete {
+    color: greenyellow;
+    padding: 1%;
+    font-size: 25px;
+}
+.mybooking_delete:hover {
+    color: crimson;
+    transform: scale(1.1);
+}
