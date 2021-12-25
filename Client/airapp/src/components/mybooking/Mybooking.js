@@ -21,7 +21,7 @@ function Mybooking() {
   }, [mybkg, bkgid])
 
   const deleteBooking = async () => {
-    await axios.delete('http://localhost:8000/api/bookings/' + bkgid)
+    await axios.delete('https://airyhn.herokuapp.com/bookings/' + bkgid)
     history.push('/')
   }
   return (

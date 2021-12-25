@@ -1,11 +1,11 @@
 import axios from 'axios'
 
 const getAllBookings = async () => {
-  return axios.get('http://localhost:8000/api/bookings/')
+  return axios.get('https://airyhn.herokuapp.com/bookings/')
 }
 
 const getBooking = async (id) => {
-  return axios.get('http://localhost:8000/api/bookings/' + id)
+  return axios.get('https://airyhn.herokuapp.com/bookings/' + id)
 }
 
 const exportedObejct = { getAllBookings, getBooking }

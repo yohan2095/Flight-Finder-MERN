@@ -55,7 +55,7 @@ function Checkout() {
 
   const save = async () => {
     
-    let status = await axios.post('http://localhost:8000/api/bookings/', booking)
+    let status = await axios.post('https://airyhn.herokuapp.com/bookings/', booking)
 
     console.log(status)
 

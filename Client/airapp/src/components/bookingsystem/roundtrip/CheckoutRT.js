@@ -58,7 +58,7 @@ function CheckoutRT() {
   }
 
   const save = async () => {
-    let status = await axios.post('http://localhost:8000/api/bookings/', booking2)
+    let status = await axios.post('https://airyhn.herokuapp.com/bookings/', booking2)
 
     history.push('/receipt')
   }
